@@ -1,6 +1,7 @@
 import react, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { app } from "../firebase";
+import { Link } from 'react-router-dom';
 import {
   getDownloadURL,
   getStorage,
@@ -188,10 +189,12 @@ export default function Profile() {
         >
           {loading ? "loading..." : "Update"}
         </button>
+
+      <Link className="bg-green-800 p-3 rounded-lg text-white text-center hover:opacity-80" to ={"/create-listing"}>
+        Create Listing
+      </Link>
       </form>
-      <button>
-          Create Listing
-        </button>
+    
       <div className="flex justify-between mt-5">
         <span
           onClick={handleDeleteUser}

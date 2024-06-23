@@ -33,8 +33,8 @@ export default function Profile() {
   const [showListingError, setShowListingError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
-  console.log(filepercentage);
-  console.log(formData);
+  // console.log(filepercentage);
+  // console.log(formData);
 
   //   change your firebase storage rules: ->
 
@@ -138,6 +138,7 @@ export default function Profile() {
       setShowListingError(false);
       const res = await fetch(`api/user/listings/${currentUser._id}`);
       const data = await res.json();
+      console.log("Fetched Listings:", data); // Log the fetched data
       if (data.success === false) {
         setShowListingError(true);
         return;
@@ -145,6 +146,28 @@ export default function Profile() {
       setUserListings(data);
     } catch (error) {
       setShowListingError(true);
+    }
+  };
+
+  const handleDeleteListing = async (listingId) => {
+    try {
+      const res = await fetch(`api/listing/delete/${listingId}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+      setUserListings((prev) => {
+        const updatedListings = prev.filter(
+          (listing) => listing._id !== listingId
+        );
+        console.log("Updated Listings:", updatedListings); // Log the updated listings
+        return updatedListings;
+      });
+    } catch (error) {
+      console.error("Error deleting listing:", error.message);
     }
   };
 
@@ -263,7 +286,10 @@ export default function Profile() {
                   <p>{listing.name}</p>
                 </Link>
                 <div className="items-center">
-                  <button className="text-red-600 uppercase border border-slate-500 p-2 rounded-xl hover:shadow-xl ">
+                  <button
+                    onClick={() => handleDeleteListing(listing._id)}
+                    className="text-red-600 uppercase border border-slate-500 p-2 rounded-xl hover:shadow-xl "
+                  >
                     Delete
                   </button>
                   <button className="text-green-600 uppercase border border-slate-500 p-2 rounded-xl hover:shadow-xl ml-2">

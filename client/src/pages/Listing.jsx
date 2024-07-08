@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
-import {useSelector} from 'react-redux';
+import { useSelector } from "react-redux";
 import "swiper/css/bundle";
 import {
   FaBath,
@@ -23,7 +23,7 @@ export default function Listing() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [contact, setContact] = useState(false);
-  const {currentUser} = useSelector((state)=> state.user)
+  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -118,10 +118,15 @@ export default function Listing() {
                 {listing.furnished ? "Furnished" : "Unfurnished"}
               </li>
             </ul>
-            {currentUser && listing.userRef !== currentUser._id && !contact &&(
-            <button onClick={()=> setContact(true)} className="bg-slate-800 p-3 text-white rounded-lg hover:opacity-85">Contact Landlord</button>
+            {currentUser && listing.userRef !== currentUser._id && !contact && (
+              <button
+                onClick={() => setContact(true)}
+                className="bg-slate-800 p-3 text-white rounded-lg hover:opacity-85"
+              >
+                Contact Landlord
+              </button>
             )}
-            {contact && <Contact listing={listing}/>}
+            {contact && <Contact listing={listing} />}
           </div>
         </>
       )}

@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="bg-slate-800 text-white py-6">
-      <div className="container flex justify-center gap-4 items-center">
+      <div className="container flex justify-center gap-4 items-center mx-auto">
         <h1 className="text-xs my-4">Follow for more updates!..</h1>
 
         <a

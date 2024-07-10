@@ -55,7 +55,7 @@ export default function Home() {
         <h1 className="text-3xl lg:text-6xl font-bold text-slate-700">
           Find your next <span className="text-slate-400">perfect</span>
           <br />
-          place with ease
+           dream house..
         </h1>
         <div className="text-gray-400 text-xs sm:text-sm font-mono">
           Dream Estate is the best place to find your next perfect place to live

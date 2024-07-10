@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ListingCard from "../component/ListingCard";
+import Footer from "../component/Footer";
 
 export default function Search() {
   const [sidebarData, setSidebarData] = useState({

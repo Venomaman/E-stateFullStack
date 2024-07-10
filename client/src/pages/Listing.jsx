@@ -52,7 +52,7 @@ export default function Listing() {
       {loading && <p className="text-center my-6 text-3xl">Loading.....</p>}
       {error && (
         <p className="text-red-800 text-center my-6 text-2xl">
-          Somethong went wrong!..
+          Something went wrong! Please Sign-out & Sign-in Again!
         </p>
       )}
       {listing && !loading && !error && (

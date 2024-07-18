@@ -65,7 +65,7 @@ export default function Search() {
   }, [location.search]);
   const navigate = useNavigate();
 
-  console.log(sidebarData);
+  // console.log(sidebarData);
 
   const handleChange = (e) => {
     if (
